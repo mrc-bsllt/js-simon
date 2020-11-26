@@ -1,7 +1,5 @@
 $(document).ready(
   function() {
-    // Dopo 30 secondi l’utente deve inserire, un prompt alla volta, i numeri che ha visto precedentemente.
-    // Una volta inseriti i 5 numeri, il software dice quanti e quali numeri sono stati ricordati.
 
     // creo un Array con 5 numeri casuali diversi da inserire nel Prompt
     var prova = [];
@@ -16,8 +14,31 @@ $(document).ready(
 
     // creo un alert che mi dica i 5 numeri casuali dentro l'array prova, e quando lo tolgo devo visualizzare la schermata del timer
     alert(prova.join(" - "));
-    $("#timer").removeClass("active");
+    $("#timer").addClass("active");
 
+    // creo un timer di 30 secondi e lo scrivo a video
+    var validNumber = [];
+    var timerTime = 30;
+    $("#timer .text").children("span").text(timerTime);
+    var count = setInterval(function() {
+      timerTime--;
+      $(".text").children("span").text(timerTime);
+      if(timerTime <= -1) {
+        clearInterval(count);
+        $("#timer").removeClass("active");
+        setTimeout(function() {
+          for (var i = 0; i < 5; i++) {
+            var userNumber = parseInt(prompt("inserisci un numero"));
+            if (isInArray(prova, userNumber)) {
+              validNumber.push(userNumber);
+            }
+          }
+          alert("Hai indovinato " + validNumber.length + " numeri!");
+          $("#result_number").addClass("active");
+          $("#result_number .text").children("span").html(validNumber.join(" - "));
+        }, 0)
+      }
+    }, 1000);
   }
 );
 
