@@ -5,18 +5,23 @@
   font-family: 'Nerko One', cursive;
 }
 
-#timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#timer,
+#result_number {
+  display: none;
+  position: relative;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
-#timer.active {
-  display: none;
+#timer.active,
+#result_number.active {
+  display: block;
 }
 #timer .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 250px;
   height: 250px;
   line-height: 230px;
@@ -25,4 +30,12 @@
   color: #ffffff;
   font-size: 150px;
   text-align: center;
+}
+#result_number .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #198a1e;
 }
