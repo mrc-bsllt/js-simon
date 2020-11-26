@@ -14,8 +14,9 @@ $(document).ready(
       }
     }
 
-    // creo un alert che mi dica i 5 numeri casuali dentro l'array prova
-    alert(prova.join(", "));
+    // creo un alert che mi dica i 5 numeri casuali dentro l'array prova, e quando lo tolgo devo visualizzare la schermata del timer
+    alert(prova.join(" - "));
+    $("#timer").removeClass("active");
 
   }
 );
